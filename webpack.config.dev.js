@@ -19,6 +19,12 @@ export default {
     contentBase: './src'
   },
   plugins: [
-    new webpack.HotModule
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugins()
+  ],
+  module: {
+    loaders: [
+      { test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel', eslint]
+    ]
+  }
 }
